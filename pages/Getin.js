@@ -1,4 +1,4 @@
-// pages/GetIn.js
+
 import React from 'react';
 import { View, StyleSheet, TouchableOpacity, Text, ImageBackground } from 'react-native';
 import run from '../assets/run.webp'
@@ -21,7 +21,7 @@ const GetIn = ({ navigation }) => {
           onPress={() => navigation.navigate('MainScreen')}  
         >
           
-          <Text style={styles.buttonText}>ENTER</Text>
+          <Text style={styles.buttonText}></Text>
         </TouchableOpacity>
       </ImageBackground>
     </View>
@@ -38,29 +38,23 @@ const styles = StyleSheet.create({
     alignItems: 'center',  
   },
   circleButton: {
-    width: 200,  
-    height: 200,  
-    borderRadius: 100,  
+    width: 500,  
+    height: 700,  
     backgroundColor: 'transparent',  
     justifyContent: 'center',  
     alignItems: 'center',  
-    marginBottom:150,
+    marginTop:50
+    
   },
-  buttonText: {
-    fontSize: 24,  
-    fontWeight: 'bold',  
-    color: 'white',
-    flex:1,
-    fontFamily:'sans-serif-condensed',
-    padding:10, 
-    justifyContent:'center',
-    alignItems:'center'
-  },
+
   text: {
-marginBottom:300,
-fontSize:25,
-fontWeight:'500',
-fontFamily:'sans-serif-condensed'
+marginBottom:1,
+fontSize:32,
+fontWeight:'bold',
+fontFamily:'sans-serif',
+textShadowColor: '#8d5d5d',
+textShadowOffset: { width: 1, height:4 },
+textShadowRadius: 1
   }
 });
 
