@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 50,
-    backgroundColor: '#AEB4A9',
+    backgroundColor: '#E9FAE3',
   },
   text: { 
     fontSize: 18,
@@ -42,18 +42,21 @@ const styles = StyleSheet.create({
     padding:5,
     marginVertical: 10,
     color: '#0c0c0c',  
-    marginTop:25
+    marginTop:20
   },
   viewbox: {
-    backgroundColor: '#E0C1B3',
+    backgroundColor:'#E9FAE3',
     margin: 30,
     borderRadius:10,
-    shadowColor:'#e90b0b',
-    height:100,
-    width:300,
+    height:80,
+    width:250,
     alignSelf:'center',
     justifyContent: 'center',
     alignItems: 'center',
+    borderWidth:2,
+    elevation: 20,
+    shadowColor: '#0b0c0b',
+    
   },
   image: {
     margin: 10,
