@@ -3,6 +3,9 @@ import { View, Text, TouchableOpacity, StyleSheet, ImageBackground } from 'react
 import swim from '../assets/swim.png';
 import running from '../assets/running.webp';
 import bicycling from '../assets/bicycling.webp'
+import InputSpinner from "react-native-input-spinner";
+import { TextInput } from 'react-native-gesture-handler';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 const App = () => {
   return (
@@ -43,11 +46,24 @@ const App = () => {
             style={styles.background}
             resizeMode="cover"
           >
-         
-           
-          </ImageBackground>
+         </ImageBackground>
+      
         </TouchableOpacity>
       </View>
+<View>
+<GestureHandlerRootView>
+         <TextInput style={styles.distance}>
+a
+         </TextInput>
+
+         <TextInput style={styles.duration}
+         
+         >
+a
+         </TextInput>
+         </GestureHandlerRootView>
+</View>
+
     </View>
   );
 };
@@ -81,20 +97,36 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#6f9acf',
     marginHorizontal: 10,
-    borderRadius: 50,
+    borderRadius: 5,
     height: 100,
-    width:100
   },
   background: {
     flex: 1,
-    justifyContent: 'flex-end', // Positions content towards the bottom of the background
+    justifyContent: 'flex-end',
     alignItems: 'center',
     margin:25
   },
   buttonText: {
     color: '#FFFFFF',
   },
- 
+  distance: {
+    borderWidth:1,
+    height:60,
+    marginTop:20,
+    padding:10,
+    fontSize:20,
+    borderRadius:5
+  },
+  duration: {
+    borderWidth:1,
+    height:60,
+    marginTop:20,
+    padding:10,
+    fontSize:20,
+    borderRadius:5
+  }
+
+
 });
 
 export default App;
