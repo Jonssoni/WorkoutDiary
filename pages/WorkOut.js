@@ -1,69 +1,100 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, ImageBackground } from 'react-native';
 import swim from '../assets/swim.png';
 import running from '../assets/running.webp';
-import bicycling from '../assets/bicycling.webp'
-import InputSpinner from "react-native-input-spinner";
-import { TextInput } from 'react-native-gesture-handler';
+import bicycling from '../assets/bicycling.webp';
+import { TextInput } from 'react-native-paper';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import DateTimePicker from '@react-native-community/datetimepicker'; // Changed to community picker for better support
 
 const App = () => {
+  const [distance, setDistance] = useState('');
+  const [duration, setDuration] = useState('');
+  const [date, setDate] = useState();
+  const [showDatePicker, setShowDatePicker] = useState(false);
+
+  const handleDateChange = (event, selectedDate) => {
+    const currentDate = selectedDate || date;
+    setShowDatePicker(false); // Hide the date picker after selecting a date
+    setDate(currentDate); // Update the date state
+  };
+
   return (
     <View style={styles.container}>
-      {/* Text Row at the top */}
+      {/* Title */}
       <View style={styles.textRow}>
         <Text style={styles.text}>Select your workout</Text>
       </View>
 
-      {/* Buttons Container */}
+      {/* Workout Buttons */}
       <View style={styles.buttonsContainer}>
         <TouchableOpacity style={styles.button} onPress={() => alert('Run')}>
-        <ImageBackground
-            source={running} // Make sure `swim` is a valid image source, like require('./path/to/image.png')
+          <ImageBackground
+            source={running}
             style={styles.background}
             resizeMode="cover"
-          >
-         
-           
-          </ImageBackground>
+          />
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.button} onPress={() => alert('Bicycle')}>
-        <ImageBackground
-            source={bicycling} // Make sure `swim` is a valid image source, like require('./path/to/image.png')
+          <ImageBackground
+            source={bicycling}
             style={styles.background}
             resizeMode="cover"
-          >
-         
-           
-          </ImageBackground>
+          />
         </TouchableOpacity>
 
-        {/* Button with ImageBackground */}
         <TouchableOpacity style={styles.button} onPress={() => alert('Swim')}>
           <ImageBackground
-            source={swim} // Make sure `swim` is a valid image source, like require('./path/to/image.png')
+            source={swim}
             style={styles.background}
             resizeMode="cover"
-          >
-         </ImageBackground>
-      
+          />
         </TouchableOpacity>
       </View>
-<View>
-<GestureHandlerRootView>
-         <TextInput style={styles.distance}>
-a
-         </TextInput>
 
-         <TextInput style={styles.duration}
-         
-         >
-a
-         </TextInput>
-         </GestureHandlerRootView>
-</View>
+      {/* Input Fields for Distance and Duration */}
+      <GestureHandlerRootView style={styles.gestureRoot}>
+        <TextInput
+          label="Distance (km)"
+          value={distance}
+          onChangeText={setDistance}
+          style={styles.input}
+          mode="outlined"
+          keyboardType="numeric"
+        />
 
+        <TextInput
+          label="Duration (min)"
+          value={duration}
+          onChangeText={setDuration}
+          style={styles.input}
+          mode="outlined"
+          keyboardType="numeric"
+        />
+      </GestureHandlerRootView>
+
+      {/* Date Picker with Placeholder */}
+      <TouchableOpacity style={styles.datePickerButton} onPress={() => setShowDatePicker(true)}>
+        <Text style={styles.dateText}>
+          {date ? date.toDateString() : 'Select Date'} {/* Display selected date or placeholder */}
+        </Text>
+      </TouchableOpacity>
+
+      {/* Conditional Date Picker */}
+      {showDatePicker && (
+        <DateTimePicker
+          mode="date"
+          value={date || new Date()}
+          display="default"
+          onChange={handleDateChange}
+        />
+      )}
+      <TouchableOpacity style={styles.addworkout}>
+        <Text>
+          button
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -80,14 +111,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-   
     padding: 10,
     marginBottom: 20,
-    borderRadius:10
+    borderRadius: 10,
   },
   text: {
     color: 'black',
-    fontSize:20
+    fontSize: 20,
   },
   buttonsContainer: {
     flexDirection: 'row',
@@ -104,29 +134,37 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-end',
     alignItems: 'center',
-    margin:25
+    margin: 25,
   },
-  buttonText: {
-    color: '#FFFFFF',
+  input: {
+    marginTop: 20,
+    backgroundColor: '#fff',
   },
-  distance: {
+  datePickerButton: {
+    
+    marginTop: 20,
+    padding: 15,
+    borderRadius: 5,
+    borderColor: '#000',
+    borderWidth: 1,
+    width: '100%',
+    alignItems: 'center',
+ 
+ 
+  },
+  dateText: {
+    fontSize: 16,
+    color: '#333',
+  },
+  addworkout:{
     borderWidth:1,
-    height:60,
-    marginTop:20,
+    margin:20,
     padding:10,
-    fontSize:20,
-    borderRadius:5
-  },
-  duration: {
-    borderWidth:1,
-    height:60,
-    marginTop:20,
-    padding:10,
-    fontSize:20,
-    borderRadius:5
+    borderRadius:20,
+    alignItems:'center',
+    marginBottom:310,
+
   }
-
-
 });
 
 export default App;

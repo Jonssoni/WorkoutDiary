@@ -4,6 +4,8 @@ import { StyleSheet, View, Text, ImageBackground, TouchableOpacity } from 'react
 import bicycle from '../assets/bicycle.webp';
 
 
+
+
 const MainScreen = ({ navigation }) => {  
   return (
     <View style={styles.container}>

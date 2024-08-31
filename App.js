@@ -7,6 +7,7 @@ import MainScreen from './pages/MainScreen';
 import WorkOut from './pages/WorkOut';
 
 
+
 const Stack = createNativeStackNavigator();
 
 const App = () => {
