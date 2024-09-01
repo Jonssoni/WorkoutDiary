@@ -52,9 +52,24 @@ const App = () => {
           />
         </TouchableOpacity>
       </View>
+       
+      <TouchableOpacity style={styles.datePickerButton} onPress={() => setShowDatePicker(true)}>
+        <Text style={styles.dateText}>
+          {date ? date.toDateString() : 'Select Date'} {/* Display selected date or placeholder */}
+        </Text>
+      </TouchableOpacity>
 
-      {/* Input Fields for Distance and Duration */}
-      <GestureHandlerRootView style={styles.gestureRoot}>
+     
+      {showDatePicker && (
+        <DateTimePicker
+          mode="date"
+          value={date || new Date()}
+          display="default"
+          onChange={handleDateChange}
+        />
+      )}
+
+      <GestureHandlerRootView>
         <TextInput
           label="Distance (km)"
           value={distance}
@@ -73,28 +88,12 @@ const App = () => {
           keyboardType="numeric"
         />
       </GestureHandlerRootView>
-
-      {/* Date Picker with Placeholder */}
-      <TouchableOpacity style={styles.datePickerButton} onPress={() => setShowDatePicker(true)}>
-        <Text style={styles.dateText}>
-          {date ? date.toDateString() : 'Select Date'} {/* Display selected date or placeholder */}
-        </Text>
-      </TouchableOpacity>
-
-      {/* Conditional Date Picker */}
-      {showDatePicker && (
-        <DateTimePicker
-          mode="date"
-          value={date || new Date()}
-          display="default"
-          onChange={handleDateChange}
-        />
-      )}
-      <TouchableOpacity style={styles.addworkout}>
-        <Text>
-          button
-        </Text>
-      </TouchableOpacity>
+      <View>
+<TouchableOpacity style={styles.addworkout}>
+  <Text>Add Workout</Text>
+</TouchableOpacity>
+</View>
+     
     </View>
   );
 };
@@ -106,6 +105,7 @@ const styles = StyleSheet.create({
     margin: 15,
     borderRadius: 20,
     justifyContent: 'flex-start',
+    backgroundColor:'#E9FAE3'
   },
   textRow: {
     flexDirection: 'row',
@@ -139,32 +139,35 @@ const styles = StyleSheet.create({
   input: {
     marginTop: 20,
     backgroundColor: '#fff',
+    backgroundColor:'#c6d8c0'
   },
   datePickerButton: {
-    
     marginTop: 20,
-    padding: 15,
+    padding: 10,
     borderRadius: 5,
     borderColor: '#000',
     borderWidth: 1,
     width: '100%',
     alignItems: 'center',
- 
- 
+    backgroundColor:'#c6d8c0'
   },
   dateText: {
     fontSize: 16,
     color: '#333',
   },
-  addworkout:{
+  addworkout: {
     borderWidth:1,
-    margin:20,
-    padding:10,
+    margin:10,
+    padding:30,
     borderRadius:20,
     alignItems:'center',
-    marginBottom:310,
-
+    justifyContent:'center',
+    alignContent:'center',
+    backgroundColor:'#c6d8c0'
+   
+   
   }
+
 });
 
 export default App;

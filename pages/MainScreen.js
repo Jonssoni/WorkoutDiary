@@ -17,7 +17,12 @@ const MainScreen = ({ navigation }) => {
       </TouchableOpacity>
       <View style={styles.viewbox}>
         
-        <Text style={styles.text}>List of workouts</Text>
+      <TouchableOpacity
+        style={styles.viewbox}
+        onPress={() => navigation.navigate('List')}
+      >  
+        <Text style={styles.text}>List of Workouts</Text>
+      </TouchableOpacity>
       </View>
       <View style={styles.viewbox}>
         <Text style={styles.text}>Settings</Text>
@@ -48,7 +53,7 @@ const styles = StyleSheet.create({
     marginTop:20
   },
   viewbox: {
-    backgroundColor:'#E9FAE3',
+    backgroundColor:'#c6d8c0',
     margin: 30,
     borderRadius:10,
     height:80,

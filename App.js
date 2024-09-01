@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import GetIn from './pages/Getin';  
 import MainScreen from './pages/MainScreen';  
 import WorkOut from './pages/WorkOut';
+import List from './pages/List'
 
 
 
@@ -28,6 +29,11 @@ const App = () => {
           name="WorkOut"
           component={WorkOut}
           options={{ title: 'Work Out' }} 
+        />
+        <Stack.Screen
+          name="List"
+          component={List}
+          options={{ title: 'List of work' }} 
         />
       </Stack.Navigator>
     </NavigationContainer>
