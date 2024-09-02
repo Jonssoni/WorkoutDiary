@@ -1,13 +1,13 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, ImageBackground } from 'react-native';
+import { TextInput } from 'react-native-paper';
 import swim from '../assets/swim.png';
 import running from '../assets/running.webp';
 import bicycling from '../assets/bicycling.webp';
-import { TextInput } from 'react-native-paper';
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import DateTimePicker from '@react-native-community/datetimepicker'; // Changed to community picker for better support
+import DateTimePicker from '@react-native-community/datetimepicker';
 
-const App = () => {
+
+const WorkoutForm = ({ onSubmit, selectedWorkout, onSelectWorkout }) => {
   const [distance, setDistance] = useState('');
   const [duration, setDuration] = useState('');
   const [date, setDate] = useState();
@@ -15,88 +15,102 @@ const App = () => {
 
   const handleDateChange = (event, selectedDate) => {
     const currentDate = selectedDate || date;
-    setShowDatePicker(false); // Hide the date picker after selecting a date
-    setDate(currentDate); // Update the date state
+    setShowDatePicker(false);
+    setDate(currentDate);
+  };
+
+  const handleSubmit = () => {
+    if (!distance || !duration || !selectedWorkout) {
+      alert('Please fill in all fields and select a workout');
+      return;
+    }
+    onSubmit({ distance, duration, date, workoutType: selectedWorkout });
+  };
+
+  return (
+    <View>
+      <View style={styles.buttonsContainer}>
+        <TouchableOpacity 
+          style={[styles.button, selectedWorkout === 'running' && styles.selectedButton]}
+          onPress={() => onSelectWorkout('running')}
+        >
+          <ImageBackground source={running} style={styles.background} resizeMode="cover" />
+        </TouchableOpacity>
+
+        <TouchableOpacity 
+          style={[styles.button, selectedWorkout === 'bicycling' && styles.selectedButton]}
+          onPress={() => onSelectWorkout('bicycling')}
+        >
+          <ImageBackground source={bicycling} style={styles.background} resizeMode="cover" />
+        </TouchableOpacity>
+
+        <TouchableOpacity 
+          style={[styles.button, selectedWorkout === 'swimming' && styles.selectedButton]}
+          onPress={() => onSelectWorkout('swimming')}
+        >
+          <ImageBackground source={swim} style={styles.background} resizeMode="cover" />
+        </TouchableOpacity>
+      </View>
+
+    
+      <TouchableOpacity style={styles.datePickerButton} onPress={() => setShowDatePicker(true)}>
+        <Text style={styles.dateText}>{date ? date.toDateString() : 'Select Date'}</Text>
+      </TouchableOpacity>
+
+      {showDatePicker && (
+        <DateTimePicker mode="date" value={date || new Date()} display="default" onChange={handleDateChange} />
+      )}
+
+  
+      <TextInput
+        label="Distance (km)"
+        value={distance}
+        onChangeText={setDistance}
+        style={styles.input}
+        mode="outlined"
+        keyboardType="numeric"
+      />
+
+      <TextInput
+        label="Duration (min)"
+        value={duration}
+        onChangeText={setDuration}
+        style={styles.input}
+        mode="outlined"
+        keyboardType="numeric"
+      />
+
+      {/* Submit Button */}
+      <TouchableOpacity style={styles.addworkout} onPress={handleSubmit}>
+        <Text>Add Workout</Text>
+      </TouchableOpacity>
+    </View>
+  );
+};
+
+const App = () => {
+  const [selectedWorkout, setSelectedWorkout] = useState(null); // State to track selected workout
+
+  const handleFormSubmit = (data) => {
+    alert(`Workout added: ${data.workoutType}, Distance: ${data.distance} km, Duration: ${data.duration} min, Date: ${data.date ? data.date.toDateString() : 'N/A'}! Have a great exercise!`);
   };
 
   return (
     <View style={styles.container}>
-      {/* Title */}
-      <View style={styles.textRow}>
-        <Text style={styles.text}>Select your workout</Text>
-      </View>
+      <Text style={styles.text}>Select your workout</Text>
 
-      {/* Workout Buttons */}
-      <View style={styles.buttonsContainer}>
-        <TouchableOpacity style={styles.button} onPress={() => alert('Run')}>
-          <ImageBackground
-            source={running}
-            style={styles.background}
-            resizeMode="cover"
-          />
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.button} onPress={() => alert('Bicycle')}>
-          <ImageBackground
-            source={bicycling}
-            style={styles.background}
-            resizeMode="cover"
-          />
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.button} onPress={() => alert('Swim')}>
-          <ImageBackground
-            source={swim}
-            style={styles.background}
-            resizeMode="cover"
-          />
-        </TouchableOpacity>
-      </View>
-       
-      <TouchableOpacity style={styles.datePickerButton} onPress={() => setShowDatePicker(true)}>
-        <Text style={styles.dateText}>
-          {date ? date.toDateString() : 'Select Date'} {/* Display selected date or placeholder */}
-        </Text>
-      </TouchableOpacity>
-
-     
-      {showDatePicker && (
-        <DateTimePicker
-          mode="date"
-          value={date || new Date()}
-          display="default"
-          onChange={handleDateChange}
-        />
-      )}
-
-      <GestureHandlerRootView>
-        <TextInput
-          label="Distance (km)"
-          value={distance}
-          onChangeText={setDistance}
-          style={styles.input}
-          mode="outlined"
-          keyboardType="numeric"
-        />
-
-        <TextInput
-          label="Duration (min)"
-          value={duration}
-          onChangeText={setDuration}
-          style={styles.input}
-          mode="outlined"
-          keyboardType="numeric"
-        />
-      </GestureHandlerRootView>
-      <View>
-<TouchableOpacity style={styles.addworkout}>
-  <Text>Add Workout</Text>
-</TouchableOpacity>
-</View>
-     
+      {/* Form Component */}
+      <WorkoutForm 
+        onSubmit={handleFormSubmit} 
+        selectedWorkout={selectedWorkout}
+        onSelectWorkout={setSelectedWorkout}
+      />
     </View>
   );
 };
+
+
+
 
 const styles = StyleSheet.create({
   container: {
@@ -117,7 +131,10 @@ const styles = StyleSheet.create({
   },
   text: {
     color: 'black',
-    fontSize: 20,
+    fontSize: 22,
+   fontWeight:'bold',
+    margin:30,
+    marginLeft:60
   },
   buttonsContainer: {
     flexDirection: 'row',
@@ -127,7 +144,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#6f9acf',
     marginHorizontal: 10,
-    borderRadius: 5,
+    borderRadius: 15,
     height: 100,
   },
   background: {
@@ -157,16 +174,17 @@ const styles = StyleSheet.create({
   },
   addworkout: {
     borderWidth:1,
-    margin:10,
+    margin:30,
     padding:30,
     borderRadius:20,
     alignItems:'center',
     justifyContent:'center',
     alignContent:'center',
     backgroundColor:'#c6d8c0'
-   
-   
-  }
+  },
+  selectedButton:
+   { borderWidth: 3,
+     borderColor: '#030303' },
 
 });
 
