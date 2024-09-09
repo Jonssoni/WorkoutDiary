@@ -1,20 +1,21 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import ListStyles from '../components/Listscreen';
+import { View, Text } from 'react-native';
 
 const WorkOut = () => {
   return (
-    <View style={styles.container}>
-      <View style={styles.list}>
-<Text style={styles.text}>
+    <View style={ListStyles.container}>
+      <View style={ListStyles.list}>
+<Text style={ListStyles.text}>
 This is the list of your workouts. keep going!
 </Text>
       </View >
-      <View style={styles.list}>
+      <View style={ListStyles.list}>
 <Text>
 hah
 </Text>
       </View>
-      <View style={styles.list}>
+      <View style={ListStyles.list}>
 <Text>
   ahh
 </Text>
@@ -23,26 +24,6 @@ hah
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection:'column'
-  },
-  text: {
-    fontSize: 24,
-    fontWeight: 'bold',
-  },
-  list: {
-    borderWidth:1,
-    flex:1,
-    width:400,
-    margin:20,
-    padding:10,
-    borderRadius:20,
-    alignItems:'center'
-  }
-});
+
 
 export default WorkOut;

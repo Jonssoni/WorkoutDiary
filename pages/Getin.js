@@ -2,60 +2,33 @@
 import React from 'react';
 import { View, StyleSheet, TouchableOpacity, Text, ImageBackground } from 'react-native';
 import run from '../assets/run.webp'
+import GetInStyles from '../components/GetInstyle';
 
 const GetIn = ({ navigation }) => {  
   return (
-    <View style={styles.container}>
+    <View style={GetInStyles.container}>
       
       <ImageBackground
         source={run}
-        style={styles.background}  
+        style={GetInStyles.background}  
         resizeMode="cover" 
       >
-        <Text style={styles.text}>
+        <Text style={GetInStyles.text}>
             Your journey starts here!
         </Text>
     
         <TouchableOpacity
-          style={styles.circleButton}
+          style={GetInStyles.circleButton}
           onPress={() => navigation.navigate('MainScreen')}  
         >
           
-          <Text style={styles.buttonText}></Text>
+          <Text style={GetInStyles.buttonText}></Text>
         </TouchableOpacity>
       </ImageBackground>
     </View>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  background: {
-    flex: 1,  
-    justifyContent: 'center',  
-    alignItems: 'center',  
-  },
-  circleButton: {
-    width: 500,  
-    height: 700,  
-    backgroundColor: 'transparent',  
-    justifyContent: 'center',  
-    alignItems: 'center',  
-    marginTop:50
-    
-  },
 
-  text: {
-marginBottom:1,
-fontSize:32,
-fontWeight:'bold',
-fontFamily:'sans-serif',
-textShadowColor: '#8d5d5d',
-textShadowOffset: { width: 1, height:4 },
-textShadowRadius: 1
-  }
-});
 
 export default GetIn;  
