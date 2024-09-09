@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
-import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity, Image } from 'react-native';
 import ListStyles from '../components/Listscreen'
 import { WorkoutContext } from './WorkoutContext'; 
+import deleteImage from '../assets/delete.webp'
 
 const WorkOutListScreen = () => {
   const { workouts, removeWorkout } = useContext(WorkoutContext); 
@@ -30,7 +31,7 @@ const WorkOutListScreen = () => {
                 Date: {workout.date ? new Date(workout.date).toDateString() : 'N/A'}
               </Text>
               <TouchableOpacity onPress={() => handleDelete(index)} style={ListStyles.deleteButton}>
-                <Text style={ListStyles.deleteButtonText}>x</Text>
+                <Image source={deleteImage} style={ListStyles.deleteImage} />
               </TouchableOpacity>
             </View>
           ))

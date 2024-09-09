@@ -29,22 +29,18 @@ const ListStyles = StyleSheet.create({
     padding: 5,
     justifyContent: 'center',
     alignSelf: 'center',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    borderBottomWidth:2,
   },
   deleteButton: {
-    backgroundColor: '#ff4d4d',
-    borderRadius: 50,
-    height:25,
-    width:25,
-    alignSelf:'flex-end',
-    position:'absolute',
+  
+    position: 'absolute',
+    right: 5, 
+    top: 5, 
   },
-  deleteButtonText: {
-    color: '#fff',
-    fontWeight: 'bold',
-    textAlign: 'center',
-    justifyContent:'center',
-
+  deleteImage: {
+    width: 25, 
+    height: 25,
   },
 });
 

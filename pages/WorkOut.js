@@ -21,7 +21,7 @@ const WorkoutScreen = () => {
 
   return (
     <View style={WorkOutStyles.container}>
-      <Text style={WorkOutStyles.text}>Select your workout</Text>
+      <Text style={WorkOutStyles.text}>Select your workout!</Text>
       <WorkoutForm 
         onSubmit={handleFormSubmit}
         selectedWorkout={selectedWorkout}
