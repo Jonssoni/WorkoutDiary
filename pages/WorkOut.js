@@ -115,11 +115,15 @@ const App = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
-    margin: 15,
-    borderRadius: 20,
+    padding: 25,
+    margin: 10,
+    borderRadius: 15,
     justifyContent: 'flex-start',
-    backgroundColor:'#E9FAE3'
+    backgroundColor:'#E9FAE3',
+    borderWidth:1.5,
+    elevation: 20,
+    shadowColor: '#0b0c0b',
+  
   },
   textRow: {
     flexDirection: 'row',
