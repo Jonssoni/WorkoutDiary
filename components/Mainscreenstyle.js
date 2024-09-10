@@ -3,12 +3,9 @@ import { StyleSheet } from "react-native";
 const MainScreenStyles = StyleSheet.create({
     container: {
       flex: 1,
-      padding: 25,
-      backgroundColor: '#d4bae9',
-      margin:10,
-      borderWidth:1.5,
-      borderRadius:15,
-  
+      padding: 10,
+      backgroundColor: '#E9FAE3',
+      borderTopWidth:1
     },
     text: { 
       fontSize: 20,
@@ -19,16 +16,16 @@ const MainScreenStyles = StyleSheet.create({
       marginTop:15
     },
     viewbox: {
-      backgroundColor:'#a9db68',
+      backgroundColor:'#c6d8c0',
       margin: 20,
-      borderRadius:10,
-      height:100,
-      width:300,
+      height:90,
+      width:320,
       alignSelf:'center',
       justifyContent: 'center',
       borderWidth:1.5,
       elevation: 20,
       shadowColor: '#0b0c0b',
+      borderRadius:10,
       
     },
     image: {

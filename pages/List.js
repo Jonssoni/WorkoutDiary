@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { View, Text, ScrollView, TouchableOpacity, Image } from 'react-native';
 import ListStyles from '../components/Listscreen'
 import { WorkoutContext } from './WorkoutContext'; 
-import deleteImage from '../assets/delete.webp'
+import deleteImage from '../assets/delete1.webp'
 
 const WorkOutListScreen = () => {
   const { workouts, removeWorkout } = useContext(WorkoutContext); 

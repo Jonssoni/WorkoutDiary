@@ -6,9 +6,7 @@ const ListStyles = StyleSheet.create({
     flex: 1,
     padding: 10,
     backgroundColor: '#E9FAE3',
-    margin: 10,
-    borderWidth: 1.5,
-    borderRadius: 15,
+    borderTopWidth: 1,
   },
   text: {
     fontSize: 20,
@@ -37,6 +35,7 @@ const ListStyles = StyleSheet.create({
     position: 'absolute',
     right: 5, 
     top: 5, 
+
   },
   deleteImage: {
     width: 25, 

@@ -4,11 +4,9 @@ const WorkOutStyles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 25,
-    margin: 10,
-    borderRadius: 15,
     justifyContent: 'flex-start',
     backgroundColor: '#E9FAE3',
-    borderWidth: 1.5,
+    borderTopWidth: 1,
     elevation: 20,
     shadowColor: '#0b0c0b',
 
@@ -69,7 +67,7 @@ const WorkOutStyles = StyleSheet.create({
     borderWidth: 1,
     margin: 15,
     padding: 30,
-    borderRadius: 20,
+    borderRadius: 5,
     alignItems: 'center',
     justifyContent: 'center',
     alignContent: 'center',
