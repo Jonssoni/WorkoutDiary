@@ -84,7 +84,7 @@ const WorkoutForm = ({ onSubmit, selectedWorkout, onSelectWorkout }) => {
       />
 
       <TouchableOpacity style={WorkOutStyles.addworkout} onPress={handleSubmit}>
-        <Text>Add Workout</Text>
+        <Text style={WorkOutStyles.selectText}>Add Workout</Text>
       </TouchableOpacity>
     </View>
   );

@@ -66,7 +66,7 @@ const WorkOutStyles = StyleSheet.create({
   addworkout: {
     borderWidth: 1,
     margin: 15,
-    padding: 30,
+    padding: 15,
     borderRadius: 5,
     alignItems: 'center',
     justifyContent: 'center',
