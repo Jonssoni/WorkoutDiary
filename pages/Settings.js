@@ -3,9 +3,9 @@ import { View, Text, StyleSheet } from 'react-native';
 import { RadioButton } from 'react-native-paper';
 
 const Settings = () => {
-  const [checked, setChecked] = useState('style1'); // Default to Style Set 1
+  const [checked, setChecked] = useState('style1'); 
 
-  // Style Set 1
+
   const style1 = StyleSheet.create({
     container: {
       flex: 1,
@@ -19,7 +19,6 @@ const Settings = () => {
     },
   });
 
-  // Style Set 2
   const style2 = StyleSheet.create({
     container: {
       flex: 1,
@@ -33,16 +32,15 @@ const Settings = () => {
     },
   });
 
-  // Apply selected style based on the chosen radio button
   const selectedStyle = checked === 'style1' ? style1 : style2;
 
   return (
     <View style={selectedStyle.container}>
       <Text style={selectedStyle.text}>Settings Screen</Text>
 
-      {/* First Radio Button - Apply Style 1 */}
+     
       <View style={styles.optionContainer}>
-        <Text>Style Set 1</Text>
+        <Text>Style 1</Text>
         <RadioButton
           value="style1"
           status={checked === 'style1' ? 'checked' : 'unchecked'}
@@ -50,9 +48,8 @@ const Settings = () => {
         />
       </View>
 
-      {/* Second Radio Button - Apply Style 2 */}
       <View style={styles.optionContainer}>
-        <Text>Style Set 2</Text>
+        <Text>Style 2</Text>
         <RadioButton
           value="style2"
           status={checked === 'style2' ? 'checked' : 'unchecked'}
@@ -63,7 +60,6 @@ const Settings = () => {
   );
 };
 
-// Additional styles for the radio button container
 const styles = StyleSheet.create({
   optionContainer: {
     flexDirection: 'row',

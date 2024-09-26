@@ -18,8 +18,8 @@ const MainScreenStyles = StyleSheet.create({
     viewbox: {
       backgroundColor:'#c6d8c0',
       margin: 30,
-      height:80,
-      width:320,
+      height:100,
+      width:300,
       alignSelf:'center',
       justifyContent: 'center',
       borderWidth:1.5,
@@ -35,6 +35,7 @@ const MainScreenStyles = StyleSheet.create({
       height:400,
       width:350,
       alignSelf:'center',
+      marginBottom:80
      
     },
     background: {
