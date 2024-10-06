@@ -28,11 +28,14 @@ const WorkoutForm = ({ onSubmit, selectedWorkout, onSelectWorkout }) => {
       alert('Please fill in all fields and select a workout');
       return;
     }
-    onSubmit({ distance: parseFloat(distance), 
+    onSubmit({ 
+      distance: parseFloat(distance),
+      originalDistance: parseFloat(distance),
       distanceUnit: isMetric ? 'km' : 'miles', 
       duration, 
       date, 
-      workoutType: selectedWorkout  });
+      workoutType: selectedWorkout  
+    });
   };
 
   return (
@@ -73,8 +76,8 @@ const WorkoutForm = ({ onSubmit, selectedWorkout, onSelectWorkout }) => {
         />
       )}
 
-      <TextInput
-        label={`Distance (${isMetric ? 'km' : 'miles'})`}
+<TextInput
+        label="Distance (km)" 
         value={distance}
         onChangeText={setDistance}
         style={WorkOutStyles.input}

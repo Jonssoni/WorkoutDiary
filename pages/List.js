@@ -3,16 +3,25 @@ import { View, Text, ScrollView, TouchableOpacity, Image } from 'react-native';
 import ListStyles from '../components/Listscreen'
 import { WorkoutContext } from './WorkoutContext'; 
 import deleteImage from '../assets/delete1.webp'
-
+import { DistanceContext } from './DistanceContext';
 
 
 
 const WorkOutListScreen = () => {
   const { workouts, removeWorkout } = useContext(WorkoutContext); 
- 
+  const { isMetric } = useContext(DistanceContext);
 
   const handleDelete = (index) => {
     removeWorkout(index);
+  };
+
+  const getDistanceText = (workout) => {
+    if (isMetric) {
+      return `${workout.distance} km`; 
+    } else {
+      const miles = workout.originalDistance * 0.621371; // Convert km to miles
+      return `${miles.toFixed(2)} miles`; 
+    }
   };
 
   return (
@@ -26,8 +35,8 @@ const WorkOutListScreen = () => {
                 Workout Type: {workout.workoutType}
               </Text>
               <Text style={ListStyles.text}>
-          Distance: {workout.distance} {workout.distanceUnit} 
-        </Text>
+              Distance: {getDistanceText(workout)}
+            </Text>
               <Text style={ListStyles.text}>
                 Duration: {workout.duration} min
               </Text>
