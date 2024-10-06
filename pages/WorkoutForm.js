@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, ImageBackground } from 'react-native';
 import { TextInput } from 'react-native-paper';
 import DateTimePicker from '@react-native-community/datetimepicker';
@@ -6,12 +6,16 @@ import swim from '../assets/swim.png';
 import running from '../assets/running.webp';
 import bicycling from '../assets/bicycling.webp';
 import WorkOutStyles from '../components/WorkOutscreenstyle'; 
+import { DistanceContext } from './DistanceContext';
 
 const WorkoutForm = ({ onSubmit, selectedWorkout, onSelectWorkout }) => {
   const [distance, setDistance] = useState('');
   const [duration, setDuration] = useState('');
   const [date, setDate] = useState(null);
   const [showDatePicker, setShowDatePicker] = useState(false);
+
+  const { isMetric } = useContext(DistanceContext);
+ 
 
   const handleDateChange = (event, selectedDate) => {
     const currentDate = selectedDate || date;
@@ -24,7 +28,11 @@ const WorkoutForm = ({ onSubmit, selectedWorkout, onSelectWorkout }) => {
       alert('Please fill in all fields and select a workout');
       return;
     }
-    onSubmit({ distance, duration, date, workoutType: selectedWorkout });
+    onSubmit({ distance: parseFloat(distance), 
+      distanceUnit: isMetric ? 'km' : 'miles', 
+      duration, 
+      date, 
+      workoutType: selectedWorkout  });
   };
 
   return (
@@ -66,7 +74,7 @@ const WorkoutForm = ({ onSubmit, selectedWorkout, onSelectWorkout }) => {
       )}
 
       <TextInput
-        label="Distance (km)"
+        label={`Distance (${isMetric ? 'km' : 'miles'})`}
         value={distance}
         onChangeText={setDistance}
         style={WorkOutStyles.input}

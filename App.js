@@ -7,11 +7,13 @@ import WorkOut from './pages/WorkOut';
 import List from './pages/List';
 import { WorkoutProvider } from './pages/WorkoutContext';
 import Settings from './pages/Settings'; 
+import { DistanceProvider } from './pages/DistanceContext';
 
 const Stack = createNativeStackNavigator();
 
 const App = () => {
   return (
+    <DistanceProvider>
     <WorkoutProvider>
       <NavigationContainer>
         <Stack.Navigator initialRouteName="GetIn">
@@ -81,6 +83,7 @@ const App = () => {
         </Stack.Navigator>
       </NavigationContainer>
     </WorkoutProvider>
+    </DistanceProvider>
   );
 };
 

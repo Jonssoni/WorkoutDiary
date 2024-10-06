@@ -1,6 +1,5 @@
-
 import React, { useLayoutEffect } from 'react';
-import { StyleSheet, View, Text, ImageBackground, TouchableOpacity } from 'react-native';  
+import { View, Text, ImageBackground, TouchableOpacity } from 'react-native';  
 import bicycle from '../assets/eggplant.webp';
 import MainScreenStyles from '../components/Mainscreenstyle';
 import Icon from 'react-native-vector-icons/Ionicons'; 

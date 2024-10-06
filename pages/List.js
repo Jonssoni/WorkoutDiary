@@ -3,9 +3,13 @@ import { View, Text, ScrollView, TouchableOpacity, Image } from 'react-native';
 import ListStyles from '../components/Listscreen'
 import { WorkoutContext } from './WorkoutContext'; 
 import deleteImage from '../assets/delete1.webp'
+import { DistanceContext } from './DistanceContext';
+
+
 
 const WorkOutListScreen = () => {
   const { workouts, removeWorkout } = useContext(WorkoutContext); 
+ 
 
   const handleDelete = (index) => {
     removeWorkout(index);
@@ -22,8 +26,8 @@ const WorkOutListScreen = () => {
                 Workout Type: {workout.workoutType}
               </Text>
               <Text style={ListStyles.text}>
-                Distance: {workout.distance} km
-              </Text>
+          Distance: {workout.distance} {workout.distanceUnit} 
+        </Text>
               <Text style={ListStyles.text}>
                 Duration: {workout.duration} min
               </Text>
