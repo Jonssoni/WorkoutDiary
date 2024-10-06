@@ -24,9 +24,41 @@ const WorkOutListScreen = () => {
     }
   };
 
+  const calculateWorkoutTotals = () => {
+    const totals = {};
+    workouts.forEach(workout => {
+      if (totals[workout.workoutType]) {
+        totals[workout.workoutType].distance += workout.distance;
+        totals[workout.workoutType].duration += parseInt(workout.duration, 10); 
+      } else {
+        totals[workout.workoutType] = {
+          distance: workout.distance,
+          duration: parseInt(workout.duration, 10), // Ensure duration is a number
+        };
+      }
+    });
+    return totals;
+  };
+
+  const workoutTotals = calculateWorkoutTotals();
+
+
   return (
     <View style={ListStyles.container}>
       <Text style={ListStyles.headertext}>Workout History</Text>
+      {Object.keys(workoutTotals).map(workoutType => (
+        <View key={workoutType} style={ListStyles.list}>
+          <Text style={ListStyles.text}>
+            {workoutType}: 
+          </Text>
+          <Text style={ListStyles.text}>
+            Distance: {getDistanceText({ distance: workoutTotals[workoutType].distance, originalDistance: workoutTotals[workoutType].distance })} 
+          </Text>
+          <Text style={ListStyles.text}>
+            Duration: {workoutTotals[workoutType].duration} min
+          </Text>
+        </View>
+      ))}
       <ScrollView>
         {workouts.length > 0 ? (
           workouts.map((workout, index) => (

@@ -29,7 +29,7 @@ const SettingsStyle = StyleSheet.create({
     flex:1,
     padding: 10,
     backgroundColor: '#E9FAE3',
-  }
+  },
 });
 
 export default SettingsStyle;
