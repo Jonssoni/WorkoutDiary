@@ -3,7 +3,7 @@ import { View, Text, ScrollView, TouchableOpacity, Image } from 'react-native';
 import ListStyles from '../components/Listscreen'
 import { WorkoutContext } from './WorkoutContext'; 
 import deleteImage from '../assets/delete1.webp'
-import { DistanceContext } from './DistanceContext';
+
 
 
 
