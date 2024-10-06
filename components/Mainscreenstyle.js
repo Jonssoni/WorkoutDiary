@@ -16,7 +16,7 @@ const MainScreenStyles = StyleSheet.create({
       marginTop:15
     },
     viewbox: {
-      backgroundColor:'#c6d8c0',
+      backgroundColor:'#cadbc5',
       margin: 30,
       height:100,
       width:300,
