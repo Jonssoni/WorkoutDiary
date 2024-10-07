@@ -19,7 +19,7 @@ const WorkOutListScreen = () => {
     if (isMetric) {
       return `${workout.distance} km`; 
     } else {
-      const miles = workout.originalDistance * 0.621371; // Convert km to miles
+      const miles = workout.originalDistance * 0.621371;
       return `${miles.toFixed(2)} miles`; 
     }
   };
@@ -33,7 +33,7 @@ const WorkOutListScreen = () => {
       } else {
         totals[workout.workoutType] = {
           distance: workout.distance,
-          duration: parseInt(workout.duration, 10), // Ensure duration is a number
+          duration: parseInt(workout.duration, 10), 
         };
       }
     });
@@ -48,13 +48,13 @@ const WorkOutListScreen = () => {
       <Text style={ListStyles.headertext}>Workout History</Text>
       {Object.keys(workoutTotals).map(workoutType => (
         <View key={workoutType} style={ListStyles.list}>
-          <Text style={ListStyles.text}>
-            {workoutType}: 
+          <Text style={ListStyles.total}>
+            {workoutType} total:
           </Text>
-          <Text style={ListStyles.text}>
+          <Text style={ListStyles.total}>
             Distance: {getDistanceText({ distance: workoutTotals[workoutType].distance, originalDistance: workoutTotals[workoutType].distance })} 
           </Text>
-          <Text style={ListStyles.text}>
+          <Text style={ListStyles.total}>
             Duration: {workoutTotals[workoutType].duration} min
           </Text>
         </View>

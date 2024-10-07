@@ -30,6 +30,9 @@ const SettingsStyle = StyleSheet.create({
     padding: 10,
     backgroundColor: '#E9FAE3',
   },
+  total: {
+  fontSize:5,
+  }
 });
 
 export default SettingsStyle;
